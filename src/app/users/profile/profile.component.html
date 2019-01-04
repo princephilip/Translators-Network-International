@@ -1,0 +1,346 @@
+<div class="row my-3">
+        <div class="col-md-4">
+
+            <!--Card-->
+            <div class="card card-cascade narrower">
+    
+                <!--Card image-->
+                <div class="view view-cascade overlay avatar mx-auto" mdbWavesEffect>
+                    <img src="assets/img/pastorchris.jpg" class="img-fluid rounded z-depth-2-half">
+                    <!-- <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a> -->
+                </div>
+    
+                <!--Card content-->
+                <div class="card-body card-body-cascade text-center">
+                    <!--Title-->
+                    <h5 class="card-title mb-2 font-bold">
+                        <strong>{{user.profile[0].title}} {{user.profile[0].firstname}}  {{user.profile[0].surname}}</strong>
+                    </h5>
+                    <hr>
+                    <h6 >
+                        <strong>Code - <span class="indigo-text">{{user.profile[0].code}}</span></strong>
+                    </h6>
+                    <h6>
+                        <strong>Church - <span class="indigo-text">{{user.profile[0].church}}</span></strong>
+                    </h6>
+                    <h6>   
+                        <strong>Country - <span class="indigo-text">{{user.profile[0].country}}</span></strong>
+                    </h6>
+                    <h6>
+                        <strong>Language - <span class="indigo-text">{{user.profile[0].language}}</span></strong>
+                    </h6>
+                    <h6>
+                        <strong>Nationality - <span class="indigo-text">{{user.profile[0].nationality}}</span></strong>
+                    </h6>
+    
+                    <hr>
+                    <!-- <h6 class='text-justify'><strong>About:</strong></h6> -->
+<!--     
+                    <div class="row">
+                        <div class="col-md-8 text-left">Followers:</div>
+                        <div class="col-md-4 text-right">
+                            <strong>675</strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 text-left">Following:</div>
+                        <div class="col-md-4 text-right">
+                            <b>234</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8 text-left">Songs:</div>
+                        <div class="col-md-4 text-right">27</div>
+                    </div> -->
+    
+                </div>
+                <!--/.Card content-->
+    
+            </div>
+            <!--/.Card-->
+    
+        </div>
+    
+        <div class="col-md-8">
+    
+    
+            <!--Card-->
+            <div class="card card-cascade narrower">
+    
+                <!--Card image-->
+                <div class="view view-cascade gradient-card-header blue-gradient">
+                    <h4 class="h4-responsive">Edit your data:</h4>
+                </div>
+                <!--/Card image-->
+    
+                <!--Card content-->
+                <div class="card-body card-body-cascade text-center">
+                    <!--Contact Form-->
+
+    <form  [formGroup]="updateForm" class="p-3" novalidate (ngSubmit)="onUpdate()">
+
+       <!-- title, firstname -->
+       <div class="form-row">
+            <!-- title column -->
+            <div class="col-md-6">
+              <div class="md-form form-group">
+                  <input mdbInputDirective type="text" class="form-control" id="title"
+                  formControlName="title" data-error="a valid title is required" 
+                    data-success=" " maxlength="6" required>
+                  <label for="title">Title</label>
+              </div>
+            </div>
+            <!--first name column -->
+            <div class="col-md-6">
+              <div class="md-form form-group">
+                <input mdbInputDirective type="text" class="form-control" id="firstname"
+                formControlName="firstname" data-error="a name is required" data-success=" " required>
+                <label for="firstname">First Name</label>
+              </div>
+            </div>
+            </div> 
+
+        <!-- middle and last name -->
+        <div class="form-row">
+            <!-- middle    name -->
+            <div class="col-md-6">
+              <div class="md-form form-group">
+                <input mdbInputDirective type="text" class="form-control" id="middlename" required
+                  formControlName="middlename" data-error="a middlename name is required" data-success=" ">
+                <label for="middlename">Second Name</label>
+              </div>
+            </div>
+               <!-- lastname column -->
+            <div class="col-md-6">
+                <!-- lastname -->
+                <div class="md-form form-group">
+                  <input mdbInputDirective type="text" class="form-control" id="surname" required 
+                  formControlName="surname" data-error="a name is required" data-success=" ">
+                  <label for="surname">Last Name</label>
+                </div>
+              </div>
+            </div>
+        <!-- email-ther, phone number -->
+        <div class="form-row">
+            <!--  email-other -->
+            <div class="col-md-6">
+                <div class="md-form form-group">
+                  <input mdbInputDirective type="email" class="form-control" id="email_other" 
+                    formControlName="email_other" data-error=" " data-success=" ">
+                  <label for="email_other">Alternative Email</label>
+                </div>
+            </div>
+              <!-- phone_no -->
+                <div class="col-md-6">
+                <div class="md-form form-group">
+                  <input mdbInputDirective type="tel" class="form-control" id="phone_no" required
+                    formControlName="phone_no" data-error="a valid phone number is required" data-success=" ">
+                  <label for="phone_no">Phone Number</label>
+                </div>
+              </div> 
+        </div>
+
+        <!-- dob, training, nationality -->
+        <div class="form-row">
+        <!-- dateOfBirth-->
+          <div class="col-md-6">
+                <div class="md-form form-group">
+                  <input mdbInputDirective type="date" class="form-control" id="dob" placeholder="date of birth"
+                    formControlName="dob" data-error="a birth date required" data-success=" " required>
+                  <label for="dob">Date of Birth</label>
+                </div>
+              </div>
+    
+            <!-- nationality -->
+            <div class="col-md-6">
+                <div class="md-form form-group">
+                    <input mdbInputDirective type="text" class="form-control" id="nationality" required
+                    formControlName="nationality" data-error="a valid nationality is required" data-success=" ">
+                  <label for="nationality">Nationality</label>
+                </div>
+              </div>
+        </div>
+
+        <div class="form-row">
+                <!-- trainingSchool -->
+                <div class="col-md-6">
+                    <div class="md-form form-group">
+                        <label>Have you completed the Training School?</label>
+                        <input type="radio" class="form-check-input" id="yes" name="training_sch_completed" value="1" mdbInputDirective
+                        formControlName="training_sch_completed" data-error="this field is required" data-success=" ">
+                        <label class="form-radio-label" for="yes">Yes</label> &nbsp;
+        
+                        <input type="radio" class="form-check-input" id="no" name="training_sch_completed" value="0" mdbInputDirective
+                        formControlName="training_sch_completed" data-error="this field is required" data-success=" ">
+                        <label class="form-radio-label" for="no">No</label>
+                      </div>
+                </div>
+    <!-- foundation school -->
+                <div class="col-md-6">
+                    <div class="md-form form-group">
+                        <label>Have you completed the foundation school? </label>
+                        <input type="radio" class="form-check-input" id="foundationSchool" name="foundation_sch_completed" value="1" mdbInputDirective
+                        formControlName="foundation_sch_completed" data-error="this field is required" data-success=" ">
+                        <label class="form-radio-label" for="foundationSchool">Yes</label> &nbsp;
+        
+                        <input type="radio" class="form-check-input" id="not foundationSchool" name="foundation_sch_completed" value="0" mdbInputDirective
+                        formControlName="foundation_sch_completed" data-error="this field is required" data-success=" ">
+                        <label class="form-radio-label" for="not foundationSchool">No</label>
+                    </div>  
+                </div>
+
+        </div>
+
+        <!-- church,foundation sch, baptized-->
+        <div class="form-row">
+
+            <!-- church -->
+            <div class="col-md-6">
+                <div class="md-form form-group">
+                    <input mdbInputDirective type="text" class="form-control" id="church" name="church"
+                    formControlName="church" data-error="a church name is required" data-success=" " >
+                    <label for="church">Name Of Church</label>
+                </div>
+            </div>
+        <!-- water baptized -->
+            <div class="col-md-6">
+                <div class="md-form form-group">
+                    <label>Are you water baptized? </label>
+                    <input type="radio" class="form-check-input" id="baptized" name="is_baptized" value="1" mdbInputDirective
+                    formControlName="is_baptized" data-error="this field is required" data-success=" ">
+                    <label class="form-radio-label" for="baptized">Yes</label> &nbsp;
+      
+                    <input type="radio" class="form-check-input" id="not baptized" name="is_baptized" value="0" mdbInputDirective
+                    formControlName="is_baptized" data-error="this field is required" data-success=" ">
+                    <label class="form-radio-label" for="not baptized">No</label>
+                </div>   
+              </div>
+             
+        </div>
+
+        <!-- marital status and kids -->
+        <div class="form-row">
+                    <!-- Do you have kids -->
+          <div class="col-md-6"> 
+            <div class="md-form form-group">
+              <label>Do you have kids? </label>
+                <input type="radio" class="form-check-input" id="haveKids" name="has_children" value="1" mdbInputDirective
+                formControlName="has_children" data-error="this field is required" data-success=" ">
+                <label class="form-radio-label" for="haveKids">Yes</label> 
+  
+                <input type="radio" class="form-check-input" id="not_haveKids" name="has_children" value="0" mdbInputDirective
+                formControlName="has_children" data-error="this field is required" data-success=" ">
+                <label class="form-radio-label" for="not_haveKids">No</label>
+            </div> 
+           </div> 
+           <!-- marital status -->
+            <div class="col-md-6">
+                <div class="md-form form-group">
+                    <label>Marital Status </label>
+                    <input type="radio" class="form-check-input" id="married" name="marital_status" value="married" mdbInputDirective
+                    formControlName="marital_status" data-error="this field is required" data-success=" ">
+                    <label class="form-radio-label" for="married">Married</label>
+    
+                    <input type="radio" class="form-check-input" id="single" name="marital_status" value="single" mdbInputDirective
+                    formControlName="marital_status" data-error="this field is required" data-success=" ">
+                    <label class="form-radio-label" for="single">Single</label>
+    
+                    <input type="radio" class="form-check-input" id="widowed" name="marital_status" value="widowed" mdbInputDirective
+                    formControlName="marital_status" data-error="this field is required" data-success=" ">
+                    <label class="form-radio-label" for="widowed">Widowed</label>
+                </div>   
+            </div> 
+           
+        </div>
+        
+        <!-- if married, -->
+      <div *ngIf="marital_status.value==='married'">
+        <!-- name and birthday of spouse -->
+          <div class="form-row">
+                <!-- name of spouse-->
+                <div class="col-md-6">
+                    <div class="md-form form-group">
+                      <input mdbInputDirective type="text" class="form-control" id="nos"
+                      formControlName="spouse_name" data-error="a name is required " data-success=" ">
+                      <label for="nos">Name of Spouse</label>
+                    </div>
+                  </div>
+                  
+                  <!-- birthOfSpouse-->
+                <div class="col-md-6">
+                    <div class="md-form form-group">
+                      <input mdbInputDirective type="date" class="form-control" id="bos" placeholder="Birth Day of Spouse"
+                        formControlName="spouse_dob" data-error="your spouse' birthday is required " data-success=" ">
+                      <label for="bos">Birth Day of Spouse</label>
+                    </div>
+                  </div>
+          </div>
+          <!-- spouse tni and wedding anniversary -->
+          <div class="form-row">
+            <!-- is spouse tni member -->
+              <div class="col-md-6">
+                <div class="md-form form-group">
+                    <label>Is your spouse a member of TNI? </label>
+                    <input type="radio" class="form-check-input" id="tniMember" name="spouse_is_tni" value="1" mdbInputDirective
+                    formControlName="spouse_is_tni" data-error="this field is required" data-success=" ">
+                    <label class="form-radio-label" for="tniMember">Yes</label>
+
+                    <input type="radio" class="form-check-input" id="not tniMember" name="spouse_is_tni" value="0" mdbInputDirective
+                    formControlName="spouse_is_tni" data-error="this field is required" data-success=" ">
+                    <label class="form-radio-label" for="not tniMember">No</label>
+                </div>   
+              </div>   
+              <!-- wedding anniversary -->
+              <div class="col-md-6">
+                  <div class="md-form form-group">
+                    <input mdbInputDirective type="date" class="form-control" id="wa" placeholder="Wedding Anniversary"
+                      formControlName="wedding_anniversary" data-error="this field is required " data-success=" ">
+                    <label for="wa">Wedding Anniversary</label>
+                  </div>
+              </div>
+          </div>
+
+          <!-- spouse' email and phone -->
+          <div class="form-row">
+              <!-- spouse email -->
+              <div class="col-md-6">
+                  <div class="md-form form-group">
+                    <input mdbInputDirective type="email" class="form-control" id="emailOfSpouse" 
+                      formControlName="spouse_email" data-error="a valid email is required" data-success=" ">
+                    <label for="emailOfSpouse"> Email address of your spouse</label>
+                  </div>
+                </div>
+
+                <!-- Spouse' phone -->
+                <div class="col-md-6">
+                  <div class="md-form form-group">
+                    <input mdbInputDirective type="tel" class="form-control" id="phone"
+                      formControlName="spouse_phone" data-error="a valid phone number is required" data-success=" ">
+                    <label for="phone">Phone number of your spouse</label>
+                  </div>
+                </div>   
+
+          </div> 
+    </div>
+
+<!-- [disabled]="updateForm.invalid" -->
+            <div class="text-center">
+                <button type="submit"  class="btn btn-primary btn-rounded waves-light" 
+                mdbWavesEffect>Update
+                </button>
+            <mdb-spinner *ngIf="loading" spinnerType="small"></mdb-spinner>
+            </div>
+
+        </form>
+
+    </div>
+    <!--/.Card content-->
+
+   </div>
+            <!--/.Card-->
+<!-- </div> -->
+    </div>
+</div>
+

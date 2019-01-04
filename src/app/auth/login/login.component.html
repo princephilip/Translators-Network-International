@@ -1,0 +1,64 @@
+
+<!-- main body -->
+<div class="main-body morpheus-den-gradient" >
+  <!-- background image -->
+  <div class="bg near-moon-gradient">
+    <!-- form panel -->
+      <div class="row">
+        <div class="col-md-12 mt-5 pt-5">
+        </div>
+      <div class="col-md-8 mx-auto my-auto m-5 p-5 ">
+        
+          <!-- login form start-->
+          <div class="card  card-cascade narrower">
+            <!--title-->
+        <div class="view view-cascade gradient-card-header aqua-gradient">
+          <h4 class="h4-responsive">TNI LOGIN PORTAL</h4>
+        </div>
+            <!--Card content  card-body-cascade-->
+            <div class="card-body  card-body-cascade">
+
+              <!-- Form -->
+              <form class="text-center" novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <br>
+                <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+
+                <!-- Email -->
+                <div class="md-form">
+                  <input type="email" class="form-control" formControlName="email" required 
+                  mdbInputDirective data-error="a valid email is required" data-success=" ">
+                  
+                  <label>Email</label>
+                </div>
+
+                <!-- Password -->
+                <div class="md-form">
+                  <input type="password"class="form-control" formControlName="password" required
+                    mdbInputDirective data-error="a valid password is required" data-success=" ">
+                  <label>Password</label>
+                </div>
+
+                <div class="d-flex justify-content-around">
+                  
+                  <div>
+                    <!-- Forgot password -->
+                    <a href="">Forgot password?</a>
+                  </div>
+                </div>
+
+                <!-- Sign in button-- submit validation--- "-->
+                <button type="button" class="btn btn-primary btn-rounded" 
+                  [ngClass]="{'info-color-dark': loginForm.valid}" [disabled]="loginForm.invalid"
+                  mdbWavesEffect type="submit" >
+                LOGIN</button>
+                <mdb-spinner *ngIf="loading" spinnerType="small"></mdb-spinner>
+              </form>
+              <!-- Form -->
+            </div>
+
+          </div>
+          <!-- login form-->
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="col-md-6 user container">
+    <h2 class="text-center">Edit User</h2>
+
+    <form [formGroup]="editForm" novalidate (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Title </label>
+        <input type="text" formControlName="title" name="title" class="form-control" id="title" 
+                mdbInputDirective name="title" data-error="a meeting title is required" 
+               data-success=" ">
+      </div>
+  
+      <div class="form-group">
+         <label for="starting">Starting time</label>
+        <input type="datetime" class="form-control" formControlName="starting" id="starting"
+                mdbInputDirective name="starting" data-error="a start time is required" data-success=" ">
+      </div>
+  
+      <div class="form-group">
+            <label for="ending">Ending time</label>
+            <input type="datetime" class="form-control" formControlName="ending" id="ending"
+                mdbInputDirective name="ending" data-error="an ending time is required" data-success=" ">
+      </div>
+  
+      <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" class="form-control" formControlName="location" id="location"
+                mdbInputDirective name="location" data-error="a location is required" data-success=" ">
+      </div>
+  
+      <div class="form-group">
+          <label for="description">Description <em>(brief)</em></label>
+            <textarea type="text" name="description"  formControlName="description" id="description"
+              class="md-textarea form-control" mdbInputDirective data-error="a description is required" data-success=" ">
+            </textarea>
+      </div>
+  
+      <button class="btn btn-success">Update</button>
+    </form>
+  </div>
+

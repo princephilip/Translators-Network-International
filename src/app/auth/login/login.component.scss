@@ -1,0 +1,38 @@
+.main-body{
+  height: unset !important;
+}
+.bg{
+  // background: url("http://vcc.rhapsodyofrealities.org/login/images/TNIlogo.png")no-repeat center center;
+  // background-size: cover;
+  height: 100vh !important;
+  overflow-x: hidden;
+}
+
+.form{
+  color: #757575;
+}
+
+.card.card-cascade .view.gradient-card-header {
+  padding: 1rem 1rem;
+  text-align: center;
+}
+
+.card.card-cascade h3, 
+.card.card-cascade h4, 
+{
+margin-bottom: 0px;
+}
+
+.label{
+  color: #757575;
+  font-size: 1rem;
+  
+}
+
+
+// @media(min-width: 375px){
+//   div.main-body{
+//       overflow-x: hidden;
+//   }
+// }
+

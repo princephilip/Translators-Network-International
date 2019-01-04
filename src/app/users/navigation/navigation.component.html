@@ -1,0 +1,103 @@
+<div class="light-blue-skin">
+
+    <!--Double navigation class=""-->
+    <header>
+        <!-- Sidebar navigation  class="grey-skin"-->
+        <mdb-side-nav #sidenav [sidenavBreakpoint]="992" [fixed]="true">
+    
+            <mdb-navbar-brand class="m-1 p-1">
+                <!-- Logo logo-wrapper-->
+                <li class="d-block">
+                    <div class="flex-center  waves-light  m-2 p-2">
+                        <a href="/">
+                            <img src="assets/img/pastorchris.jpg" 
+                            class="img-fluid  z-depth-2 rounded-circle hoverable">
+                        </a>
+                    </div>
+                </li>
+              
+                <!--/. Logo -->
+            </mdb-navbar-brand>
+                
+            <links>
+        
+                <li style=" margin:3px; padding: 3px;">
+                <span class="flex-center ">{{user.profile[0].title}} {{user.profile[0].firstname}} {{user.profile[0].surname}}</span>
+                <span class="flex-center ">{{user.profile[0].language}}</span>
+                <span class="flex-center">Your Team Leader</span>
+                </li>
+                <!-- Side navigation links -->
+                <li>
+                    <ul class="collapsible collapsible-accordion">
+                        <mdb-squeezebox [multiple]="false" aria-multiselectable="false">
+    
+                            <!-- <mdb-item>
+                                <mdb-item-head mdbWavesEffect>
+                                    <i class="fa fa-tachometer"></i> Dashboards
+                                </mdb-item-head>
+                                <mdb-item-body>
+                                    <ul>
+                                        <li>
+                                            <a routerLink="dashboards/v1" class="waves-effect" mdbWavesEffect>Version 1</a>
+                                        </li>
+                                        <li>
+                                            <a routerLink="dashboards/v2" class="waves-effect" mdbWavesEffect>Version 2</a>
+                                        </li>
+                                        <li>
+                                            <a routerLink="dashboards/v3" class="waves-effect" mdbWavesEffect>Version 3</a>
+                                        </li>
+                                        <li>
+                                            <a routerLink="dashboards/v4" class="waves-effect" mdbWavesEffect>Version 4</a>
+                                        </li>
+                                        <li>
+                                            <a routerLink="dashboards/v5" class="waves-effect" mdbWavesEffect>Version 5</a>
+                                        </li>
+                                    </ul>
+                                </mdb-item-body>
+                            </mdb-item> -->
+                         
+                            <mdb-item class="no-collase">
+                                <mdb-item-head  *ngFor="let menu of user.menu" mdbWavesEffect routerLink="{{menu.route}}">
+                                    <i class="{{menu.icon}}"></i>{{menu.name}} 
+                                </mdb-item-head>
+                                <mdb-item-body></mdb-item-body>
+                            </mdb-item>
+                          
+                        </mdb-squeezebox>
+                    </ul>
+                </li>
+                <!--/. Side navigation links -->
+            </links>
+            <div class="sidenav-bg mask-strong"></div>
+    
+        </mdb-side-nav>
+        <!--/. Sidebar navigation -->
+    
+    
+            <!-- Navbar -->
+        <mdb-navbar SideClass="navbar fixed-top navbar-toggleable-md navbar-expand-md scrolling-navbar 
+            double-nav justify-content-between" [containerInside]="false">
+        
+            <navlinks class="navbar-container">
+                <!-- SideNav slide-out button -->
+                <div class="float-left">
+                    <a (click)="sidenav.show()" class="button-collapse"><i class="fa fa-bars"></i></a>
+                </div>
+                <!--/. SideNav slide-out button -->
+            </navlinks>
+        
+            <navlinks class="navbar-text ">
+            
+            <h2 class="nav-link  m-auto p-auto justify-content-center">
+                <img src="assets/img/tni-main-logo.png" class="d-inline-block logo" alt="TNIP Logo">
+                Translators Network International Portal
+            </h2>
+        
+            </navlinks>
+        </mdb-navbar>
+            <!--/. Navbar -->
+    
+    </header>
+    <!--/.Double navigation-->
+    
+    </div>

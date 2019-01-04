@@ -1,0 +1,47 @@
+<div class="row my-5 mx-5">
+
+  <!-- users component here  -->
+    <div class="col-md-10 ">
+          <!--Card-->
+          <div class="card card-cascade narrower">
+            <!--title-->
+            <div class="view view-cascade gradient-card-header blue-gradient">
+              <h4 class="h4-responsive">Invite New Users</h4>
+            </div>
+            <!--Card content-->
+            <div class="card-body card-body-cascade">
+              <!-- Login form -->
+              <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+
+            <!-- email -->
+                <div class="md-form">
+                  <input type="email" id="Email" class="form-control" 
+                    mdbInputDirective formControlName="email"
+                    data-error="an email is required" data-success=" ">
+                  <label for="Email"> email</label>
+                </div>
+
+            <!-- role -->
+                <select class="custom-select browser-default" formControlName="role">
+                    <option value="" disabled selected >Choose a role </option>
+                    <option *ngFor="let role of roles" value="role.alias">{{role.role}}</option>
+                  </select>
+               
+            <!-- invite button -->
+                <div class="text-center mt-3">
+                    <button mdbBtn type="button" gradient="purple" rounded="true" type="submit"
+                       mdbWavesEffect [disabled]="addUserForm.invalid">Invite</button>
+                    <mdb-spinner *ngIf="loading" spinnerType="small" spinnerColor="blue"></mdb-spinner>
+                </div>
+
+              </form>
+              <!--end of Login form -->
+            </div>
+            <!--/ end of.Card content-->
+        </div>
+        <!-- column-->
+
+    </div>
+<!-- end of main view container-->
+
+</div>

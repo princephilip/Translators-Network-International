@@ -1,0 +1,50 @@
+
+<form [formGroup]="postsForm" (ngSubmit)="addPosts(postsForm.value)" class="flc-margin">
+  <input placeholder="Author" formControlName="author" required>
+  <input placeholder="Title" formControlName="title" required>
+  <input placeholder="Content" formControlName="content" required>
+  <select formControlName="media_type" class="browser-default custom-select">
+          <option selected>Choose your media file</option>
+          <option value="0">None</option>
+          <option value="1">Picture</option>
+          <option value="2">Audio</option>
+          <option value="3">Video</option>
+  </select>
+  <select formControlName="comment_allowed" class="browser-default custom-select">
+          <option selected>Comment Allowed?</option>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+  </select>
+  <input type="file" placeholder="Media" formControlName="media">
+
+  <button class="submit-btn" color="primary" type="submit">Add a Post</button>
+</form>
+
+
+<!-- Display all post-->
+<table class="table table-striped table-bordered">
+<thead class="aqua-gradient">
+<tr>
+<th scope="col">Author</th>
+<th scope="col">Title</th>
+<th scope="col">Content</th>
+<th scope="col">Change</th>
+
+</tr>
+</thead>
+
+<tbody *ngFor="let postslist of posts">
+<tr>
+<td>{{postslist.author}}</td>
+<td>
+    {{postslist.title}}
+</td>
+<td>{{postslist.content}}</td>
+<td>
+        <button class="delete" title="delete post"
+        (click)="deletePosts(postslist.id)">Delete</button>
+</td>
+
+</tr>
+</tbody>
+</table>

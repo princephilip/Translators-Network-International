@@ -1,0 +1,91 @@
+// @import "../node_modules/bootstrap/scss/variables";
+// @import "../node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+:host /deep/ .navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    cursor: pointer;
+}
+
+:host /deep/ .navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background: no-repeat center center;
+    background-size: 100% 100%;
+}
+
+ navlinks.navbar-text  {
+    vertical-align: middle;
+    width: 79%;
+    align-items: center;
+    display: inline-block;
+}
+
+:host /deep/ h6 { font-size: .75em; }
+// h1 { font-size: 2em; }
+// h2 { font-size: 1.7em; color:green;}
+// h3 { font-size: 1.17em; }
+// h4 { font-size: 1.1em; }
+// h5 { font-size: .83em; }
+// h6 { font-size: .75em; }
+
+:host /deep/ ul li.dropdown a.dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header, main, footer {
+    padding-left: 240px;
+  }
+  navlinks>h2>img.logo{
+    height: 45px;
+}
+  
+  @media only screen and (max-width : 992px) {
+    header, main, footer {
+      padding-left: 0;
+    }
+  }
+
+  @include media-breakpoint-up(xs) {
+    h2 {
+        font-size: 0.9rem;
+        margin-left: 1px;
+        };
+    navlinks>h2>img.logo{
+            height: 25px;
+        };
+   
+    navlinks.navbar-text{
+        width: 90%;
+        text-align: center;
+        margin-left: 2.3rem;
+        padding: 0px;
+    } 
+    }
+
+    @include media-breakpoint-up(sm) {
+    h2 {
+        font-size: 1.2rem;
+        margin-left: 1px;
+        }
+    }
+    
+    @include media-breakpoint-up(md) {
+    h2 {
+        font-size: 1.4rem;
+        }
+    }
+    
+    @include media-breakpoint-up(lg) {
+    h2  {
+        font-size: 1.6rem;
+        }
+    navlinks>h2>img.logo{
+        height: 40px;
+    }
+    }

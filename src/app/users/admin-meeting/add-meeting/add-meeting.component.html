@@ -1,0 +1,118 @@
+<div class="body m-4 p-4">
+
+  <!-- add meeting button (click)="modal()" (click)="openModal() -->
+    <div class="text-center m-2">
+      <button type="button" mdbBtn color="default" rounded="true" 
+        data-toggle="modal" data-target="#frameModal" (click)="frame.show()"
+        mdbWavesEffect >Add Meeting +
+      </button> 
+    </div>
+
+  <!-- page title -->
+  <h2 class="text-center">All Meetings</h2>
+    <hr>
+    <div *ngIf="loading" class="text-center"><mdb-spinner  spinnerType="small"></mdb-spinner></div>
+
+<!-- display meetins -->
+    <div class="row">
+      <div *ngFor="let meeting of allAdminMeetings" class="col-sm-6 mb-3 ">
+          <mdb-card borderColor="border-light" >
+              <!-- [ngClass]="{'border-danger': meeting.closed ==='1'}" -->
+              <mdb-card-header>
+                  {{meeting.title}}                  
+              </mdb-card-header>
+              <mdb-card-body>
+                <mdb-card-title>
+                  <h5><em>{{meeting.starting}} - {{meeting.ending}}</em></h5>
+                </mdb-card-title>
+                <mdb-card-text>
+                    {{meeting.description}}<br>
+                   <strong> Location: {{meeting.location}} {{meeting.created_by}}</strong>
+                </mdb-card-text>
+                <div class="text-center">
+                  <button type="button" (click)="close(meeting)" class="btn btn-outline-warning btn-rounded waves-effect btn-md  wow flipOutY">
+                      Close&nbsp;<fa-icon [icon]="faWindowClose"></fa-icon></button>
+
+                    <button type="button" class="btn btn-outline-success btn-rounded waves-effect btn-md pl-3 pr-3 wow flipOutY"
+                      *ngIf="meeting.suspend === '1'" (click)="play(meeting)" >UnSuspend&nbsp;<fa-icon  [icon]="faPlay"></fa-icon> </button>
+                    <button type="button" class="btn btn-outline-info btn-rounded waves-effect btn-md pl-3 pr-3  wow flipOutY"
+                      *ngIf="meeting.suspend === '0'" (click)="pause(meeting)">Suspend&nbsp;<fa-icon  [icon]="faPause"></fa-icon> </button>
+                  </div>
+                  <div class="text-center">
+                    <button type="button" (click)="deleteMeeting(meeting)" class="btn btn-outline-danger btn-rounded waves-effect btn-md  wow flipOutY">Delete&nbsp;<fa-icon [icon]="faTrash"></fa-icon></button>
+                    <button type="button" (click)="editMeeting(meeting)" class="btn btn-outline-primary btn-rounded waves-effect btn-md wow flipOutY">&nbsp;Edit&nbsp;<fa-icon [icon]="faEdit"></fa-icon>&nbsp;</button>                  
+                </div>
+                
+              </mdb-card-body>
+            </mdb-card>
+      </div>
+
+    </div>
+</div>
+
+
+<!-- Add Modal   -->
+
+<div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" 
+  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">ADD MEETING</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!-- form -->
+      <form [formGroup]="addMeetingForm" novalidate (ngSubmit)="onSubmit()">
+
+          <!-- modal body -->
+        <div class="modal-body" >
+          <!-- title -->
+          <div class="md-form mb-5">
+            <input type="text" class="form-control" formControlName="title"
+              mdbInputDirective name="title" data-error="a meeting title is required" 
+              data-success=" ">
+            <label >Meeting Title</label>
+          </div>
+          <!-- start time -->
+          <div class="md-form mb-4">
+            <input type="datetime-local" class="form-control" formControlName="starting"
+              mdbInputDirective name="starting" data-error="a start time is required" data-success=" "
+              placeholder="yyyy-mm-dd hh:mm AM">
+            <label  >Starting date & time</label>
+          </div>
+          <!-- end time -->
+          <div class="md-form mb-4">
+              <input type="datetime-local" class="form-control" formControlName="ending"
+                mdbInputDirective name="ending" data-error="an ending time is required" data-success=" "
+                placeholder="yyyy-mm-dd hh:mm PM">
+                <label >Ending date & time</label>
+            </div>
+            <!-- location -->
+            <div class="md-form mb-5">
+                <input type="text" class="form-control" formControlName="location"
+                  mdbInputDirective name="location" data-error="a location is required" data-success=" ">
+                <label >Location</label>
+            </div>
+            <!-- description -->
+            <div class="md-form mb-5">
+                  <textarea type="text" name="description"  formControlName="description"
+                    class="md-textarea form-control" mdbInputDirective data-error="a description is required" data-success=" "></textarea>
+                <label >Description <em>(brief)</em></label>
+            </div>
+
+        <!-- modal footer -->
+          <div class="d-flex justify-content-center">
+            <button mdbBtn type="submit" color="indigo" class="waves-light" mdbWavesEffect
+              (click)="frame.hide()" >Add Meeting
+            </button>
+          </div>
+        <!-- end of modal form -->
+        </div> 
+      </form>
+     
+    </div>
+  </div>
+</div>

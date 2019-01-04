@@ -1,0 +1,36 @@
+<div class="body m-2 p-2">
+ <h2 class="text-center">My Meetings</h2>
+ <hr>
+  <!-- show meetings -->
+  <div *ngIf="loading" class="text-center"><mdb-spinner  spinnerType="small"></mdb-spinner></div>
+
+  <div class="row">
+<!--   -->
+    <div *ngFor="let meeting of memberMeetings" class="col-sm-6 mb-3 ">
+        <mdb-card borderColor="border-light" >
+            <mdb-card-header>{{meeting.title}}</mdb-card-header>
+            <mdb-card-body>
+              <mdb-card-title>
+                <h5><em>{{meeting.starting}} - {{meeting.ending}}</em></h5>
+              </mdb-card-title>
+              <mdb-card-text>{{meeting.description}}<br>
+                 <strong> Location: {{meeting.location}}</strong>
+              </mdb-card-text>
+              <div class="text-center">
+                <button type="button"  class="btn btn-outline-success waves-effect btn-md">
+                  <fa-icon  [icon]="faUserCheck"></fa-icon> 
+                </button>
+                <button type="button" (click)="register(meeting)" class="btn btn-outline-grey waves-effect btn-md">
+                    <fa-icon  [icon]="faUserPlus"></fa-icon> 
+                </button>
+                <button type="button"  (click)="unRegister(meeting)" class="btn btn-outline-danger waves-effect btn-md">
+                    <fa-icon  [icon]="faUserMinus"></fa-icon> 
+                </button>
+
+              </div>
+            </mdb-card-body>
+          </mdb-card>
+    </div>
+
+  </div>
+</div>
