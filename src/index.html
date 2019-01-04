@@ -2,13 +2,57 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Tni</title>
+  <title>TNI</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Oxygen"rel="stylesheet">
 </head>
 <body>
+<!-- for a preload spinning   -->
+    <div class="spinning-preloader-container">
+        <div class="preloader-wrapper big active">
+    
+              <div class="spinner-layer spinner-blue">
+                <div class="circle-clipper left">
+                  <div class="circle"> </div>
+                </div> <div class="gap-patch">
+                  <div class="circle"> </div>
+                </div>
+              </div>
+    
+              <div class="spinner-layer spinner-red">
+                <div class="circle-clipper left">
+                  <div class="circle"> </div>
+                </div> <div class="gap-patch">
+                  <div class="circle"> </div>
+                </div>
+              </div>
+    
+              <div class="spinner-layer spinner-yellow">
+                <div class="circle-clipper left">
+                  <div class="circle"> </div>
+                </div> <div class="gap-patch">
+                  <div class="circle"> </div>
+                </div>
+              </div>
+    
+              <div class="spinner-layer spinner-green">
+                <div class="circle-clipper left">
+                  <div class="circle"> </div>
+                </div> <div class="gap-patch">
+                  <div class="circle"> </div>
+                </div>
+              </div>
+    
+        </div>
+    </div>
   <app-root></app-root>
+  <!-- wow effect scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script>
+    new WOW().init();
+ </script>
 </body>
 </html>
