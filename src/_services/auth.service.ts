@@ -37,7 +37,7 @@ export class AuthService {
   public currentUser: Observable<tniData>
   private user$ : boolean
   
-  private baseUrl = 'http://app.translatorsnetworkinternational.org/api'
+  private baseUrl = ''
   private registerUrl = 'user/register'
   private loginUrl = 'user/login'
   private logoutUrl = 'user/logout'
