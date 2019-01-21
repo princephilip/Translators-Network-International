@@ -15,9 +15,9 @@ interface myData {
 })
 export class EventsService {
 
-  private baseUrl = 'http://app.translatorsnetworkinternational.org/api'
+  private baseUrl = ''
   private getUsersUrl = 'invites/list' 
-  private addNewUrl = 'http://app.translatorsnetworkinternational.org/api/invite/new/member'
+  private addNewUrl = ''
   private addRoleUrl = 'user/role/add'
   private allUsersRoleUrl = 'user/roles/list'
 
