@@ -1,0 +1,59 @@
+body{margin: 0;
+    font-family: 'Oxygen', sans-serif;
+     font-size: 1rem;
+     font-weight: 400;
+     line-height: 1.5;
+     color: #000;
+     text-align: left;
+     background-color: lightgray;}
+
+.progress-bar, .progress {
+height: 15px !important;
+}
+
+.score-card{
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+p.title{
+    font-weight: bolder;
+}
+
+
+.goals-title{
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    background-color: #02025a;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.vertical-line {
+    border-left: 6px solid white;
+    height: 180px;
+}
+
+.foot-info{
+    margin: 3px;
+    padding: 3px;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+span.together{
+    line-height: 5px;
+    font-size: 1.2rem;
+}
+
+span.left{
+    // font-size: 3.6rem
+}
+
+.group{
+    line-height: 21px;
+    line-break: normal;
+}

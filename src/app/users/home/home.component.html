@@ -1,0 +1,278 @@
+
+    <em class="deep-purple-text font-weight-bold m-1 p-1">
+            Welcome {{user.profile[0].title}} {{user.profile[0].firstname}} {{user.profile[0].surname}}, it's your year of Lights and you shine brighter...
+    </em>
+<!-- <div class="container-fluid"> -->
+    <section class="mt-1 p-1">
+        <!-- top panel -->
+        <div class="row flex-center p-2 morpheus-den-gradient">
+      
+          <!-- members -->
+          <div class="col-md-4 wow lightSpeedIn">
+            <a class="text-left group pl-2" (click)="meetingsClicked()">
+                <span class="left float-left fa-4x blue-text ">
+                    <fa-icon  [icon]="faUsers"></fa-icon>
+                </span>
+                <span class="together float-left pt-1 ml-1 pl-1">
+                    <span class="text-left white-text h5 font-weight-bold">My Meetings</span><br>
+                    <span class="flex-center white-text h5 font-weight-bold">20</span>
+                </span> 
+            </a>
+          </div>
+      
+          <!-- Inbox -->
+          <div class="col-md-4 wow lightSpeedIn">
+                <a class="text-left group pl-2" (click)="inboxClicked()">
+                    <span class="left float-left fa-4x amber-text">
+                    <fa-icon  [icon]="faEnvelope"></fa-icon>
+                    </span>
+                    <span class="together float-left pt-1 ml-1 pl-1">
+                        <span class="text-left white-text h5 font-weight-bold">Inbox</span><br>
+                        <span class="flex-center white-text h5 font-weight-bold">50</span>
+                    </span> 
+                </a>
+            </div>
+      
+            <!-- languages -->
+            <div class="col-md-4 wow lightSpeedIn">
+                <a class="text-left group pl-2" >
+                    <span class="left float-left fa-4x light-green-text ">
+                        <fa-icon  [icon]="faLanguage"></fa-icon>
+                    </span>
+                    <span class="together float-left pt-1 ml-1 pl-1">
+                        <span class="text-left white-text h5 font-weight-bold">Languages</span><br>
+                        <span class="flex-center white-text h5 font-weight-bold">1004</span>
+                    </span> 
+                </a>
+            </div>
+              
+      
+        </div>
+    </section>
+        <div class="container">
+
+        <div class="mt-2 pt-2">
+        <em class="deep-orange-text h6.responsive font-weight-bold p-2">Monthly Report Submission Status</em>
+          <div class="progress amy-crisp-gradient"> 
+              <div class="progress-bar" role="progressbar" [ngStyle]="{'width': monthlyStatus}"    
+              [aria-valuenow]="monthlyStats"  aria-valuemin="0" aria-valuemax="100">{{monthlyStatus}}</div>
+          </div>
+        </div>
+
+        <div class="row">
+  
+               <!-- score and goals-->
+                <div class="col-md-6">
+                  <div class="col-12 col-md-12 col-lg-12">
+                    <div class="score-card h4-responsive text-center bg-white deep-orange-text">Score Card</div>
+                    <!-- score -->
+                      <ul class="list-group list-group-flush">
+                          <li class="list-group-item" *ngIf="loading">
+                              <mdb-spinner spinnerType="small"></mdb-spinner>
+                            </li>
+                          <li class="list-group-item indigo-text font-weight-bold" *ngFor="let head of scoresHead">
+                                <h4 class="float-left font-weight-bold">{{head.name}}</h4>
+                              <span class="float-right">
+                                <h4 class="font-weight-bold ">{{head.value}}</h4>
+                              </span>
+                          </li>   
+          
+                          <li class="list-group-item" *ngFor="let score of scores">
+                              <h5 class="float-left font-weight-bold">{{score.name}}</h5>
+                              <span class="float-right">
+                                <ng-container *ngIf="score.submitted; else elseTemplate">
+                                    <span class="green-text">
+                                        <fa-icon  [icon]="faCheckCircle"></fa-icon>
+                                    </span>
+                                </ng-container>
+                                <ng-template #elseTemplate>
+                                    <span class="red-text">
+                                        <fa-icon  [icon]="faTimesCircle"></fa-icon>
+                                    </span>
+                                </ng-template>
+                              </span>
+                          </li>
+                        </ul>
+                  </div>
+                  
+                  <!-- goals -->
+                  <div class="col-12 col-md-12 col-lg-12 white-text font-weight-bold mt-2 pt-2 mb-2 pb-2 ">
+                    
+                    <ul class="list-group list-group-flush">
+                        <li>
+                            <div class="goals-title h4-responsive">Goals of the year</div>
+                        </li>
+                        <li class="list-group-item flex-center" *ngIf="loading">
+                            <mdb-spinner spinnerType="small"></mdb-spinner>
+                        </li>
+        
+                        <li class="list-group-item pb-1 mb-1 aqua-gradient wow rollIn" *ngFor="let goal of goals" >
+                            <h5 class="text-left font-weight-bold">{{goal.goal}}</h5>
+                        </li>
+                    </ul>
+                  </div>
+
+                </div>
+
+                <!-- manuscript, archives, elite pace setters -->
+                <div class="col-md-6">
+
+                    <h4 class="font-weight-bold grey-text">Manuscripts</h4>
+                    <div class="row text-center mb-3 pb-3">
+                        <div class="col-md-2 fa-2x">
+                            <fa-icon [icon]="faFileSignature"></fa-icon>
+                        </div>
+                        <div class="col-md-5 indigo-text text-center">
+                        <span class="font-weight-bold h4-responsive">{{month}} 2019</span>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <button type="button" title="Download Manuscripts"  mdbWavesEffect
+                                class="btn btn-blue-grey waves-effect btn-sm wow flipOutY">&nbsp;Download&nbsp;<fa-icon [icon]="faDownload"></fa-icon>
+                            </button> 
+                        </div>
+                    </div>
+
+                <h4 class="font-weight-bold grey-text">Archives</h4>
+                    <div class="col-12 col-md-12 col-lg-12  black-text mb-3 pb-3">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" *ngIf="loading">
+                                <mdb-spinner spinnerType="small"></mdb-spinner>
+                            </li>
+            
+                            <li class="list-group-item pb-1 mb-1 heavy-rain-gradient wow fadeInDown" data-wow-delay="0.3s" 
+                                    *ngFor="let archive of archives" >
+                                <span class="text-left font-weight-bold p-2 ">{{archive.title}}</span>
+                            </li>
+                        </ul>
+                        
+                    </div>
+
+                <h4 class="font-weight-bold grey-text">Elite Pace Setters</h4>
+                <div class="col-12 col-md-12 col-lg-12  mb-3 pb-3">
+                    <ul class="list-group list-group-flush">
+                            <li class="list-group-item" *ngIf="loading">
+                                <mdb-spinner spinnerType="small"></mdb-spinner>
+                            </li>
+            
+                            <li class="list-group-item pb-1 mb-1 rare-wind-gradient" *ngFor="let pace of paceSetters" >
+                                    <div class="row wow rollIn">
+                                        <div class="col-md-2 fa-3x">
+                                            <fa-icon [icon]="faUserCircle"></fa-icon>
+                                        </div>
+                                        <div class="col-md-10">
+                                        <span class="font-weight-bold">Munyaradzi Ranga</span><br>
+                                        <span>{{pace.achievement}}</span>
+                                        </div>
+                                    </div> 
+                            </li>
+                        </ul>
+                </div>
+                 
+                 
+                </div>
+                
+        </div>
+        <!-- end of main body container -->
+        </div>
+
+        <!-- bottom information center, comments -->
+        <div class="row mb-2 pb-2 responsive" style="background-color: #0d0d8f; height: 180px;">
+            <div class="col-md-6 white-text text-center" ><h5 class="foot-info">Information Center</h5></div>
+            <div class="vertical-line"></div>
+            <div class="col-md-5 white-text text-center"><h5 class="foot-info">Comments</h5></div>
+        </div>
+
+    <!-- table for submittions -->
+    <div class="row">
+        <h4 class="font-weight-bold p-2 m-2 ">Translation status</h4>
+        <div class="col-md-11 table-responsive">
+            <table class="table" style="border-style: groove;" small="true">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">JAN</th>
+                <th scope="col">FEB</th>
+                <th scope="col">MAR</th>
+                <th scope="col">APR</th>
+                <th scope="col">MAY</th>
+                <th scope="col">JUN</th>
+                <th scope="col">JUL</th>
+                <th scope="col">AUG</th>
+                <th scope="col">SEP</th>
+                <th scope="col">OCT</th>
+                <th scope="col">NOV</th>
+                <th scope="col">DEC</th>
+        
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">Xhosa</th>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+          
+            </tr>
+            <tr>
+                <th scope="row">Yoruba</th>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+            </tr>
+            <tr>
+                <th scope="row">Igbo</th>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+            </tr>
+            <tr>
+                <th scope="row">Ewu</th>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-success pl-2 pr-2 p-1 m-1"></button></td>
+                <td><button class="btn-danger pl-2 pr-2 p-1 m-1"></button></td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <div> 
+        <img src="assets/img/outreach.jpg" alt="tni blw home page" class=" d-block w-100 img-fluid">
+    </div>
+<!-- </div>       -->
